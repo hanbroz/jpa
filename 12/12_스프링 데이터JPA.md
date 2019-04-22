@@ -463,3 +463,198 @@ Pageable의 기본값은 page=0, size=20이다. 변경하고 싶으면 @Pageable
 
 ## 12.8 스프링 데이터 JPA가 사용하는 구현체
 
+공통 인터페이스를 org.springframework.data.jpa.repository.support.SimpleJpaRepository 클래스가 구현하고 있다.
+
+~~~java
+
+@Repository // JPA 예외를 추상화 예외로 변환
+@Transactional(readOnly = true) // 데이터를 조회하는 경우 true 옵션을 적용
+public class SimpleJpaRepository<T,ID extends Serializable> implements JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
+    
+    @Transactional // 트랜잭션, JPA에서 모든 변경은 트랜잭션 안에서 일어나야 한다.
+    public <S extends T> S save(S entity) { // 저장할 데이터가 있으면 반영 후 영속화하고 없으면 병합한다.
+        if(entityInformation.isNew(entity)) {
+            em.persist(entity);
+            return entity;
+        }
+        else {
+            return em.merge(entity);
+        }
+    }
+}
+
+~~~
+
+## 12.9 JPA 샵에 적용
+
+**순서**
+
+1. 환경설정
+2. Repository 리팩토링
+3. 명세적용
+4. 기타
+
+### 12.9.1 환경설정
+
+~~~xml
+
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>1.8.0</version>
+</dependency>
+        
+~~~
+
+~~~xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+<jpa:repositories base-package="com.hanbroz.study.jpa.repository" />
+
+</beans>
+
+~~~
+
+### 12.9.2 Repository 리팩토링
+
+1. 클래스 > 인터페이스로 변경
+2. JpaRepository 상속
+3. save(), findOne(), findAll() > 제거, JpaRepository가 기본적으로 제공
+4. findByName() > JPA가 해당 이름을 분석해서 적절하게 실행 해 준다,
+
+~~~java
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    List<Member> findByName(String name);
+}
+
+~~~
+
+상품의 경우 모든 Repository를 JpaRepository가 제공한다.
+
+~~~java
+
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+}
+
+~~~
+
+주문의 경우 복잡한 구현이 들어가 있었다. 명세기능을 사용하여 검색을 구현해 보자. JpaSpecificationExecutor를 추가로 상속 받았다.
+
+~~~java
+
+public interface OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor<Order>, CustomOrderRepository {
+
+}
+
+~~~
+
+### 12.9.3 명세적용
+
+명세를 작성해 보자
+
+~~~java
+
+public class OrderSpec {
+
+    public static Specification<Order> memberNameLike(final String memberName) {
+        return new Specification<Order>() {
+            public Predicate toPredicate(Root<Order> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+
+                if (StringUtils.isEmpty(memberName)) return null;
+
+                Join<Order, Member> m = root.join("member", JoinType.INNER); //회원과 조인
+                return builder.like(m.<String>get("name"), "%" + memberName + "%");
+            }
+        };
+    }
+
+    public static Specification<Order> orderStatusEq(final OrderStatus orderStatus) {
+        return new Specification<Order>() {
+            public Predicate toPredicate(Root<Order> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+
+                if (orderStatus == null) return null;
+
+                return builder.equal(root.get("status"), orderStatus);
+            }
+        };
+    }
+}
+
+~~~
+
+## 12.10 스프링 데이터 JPA와 QueryDSL 통합
+
+스프링에서는 다음 두가지 방법으로 QueryDSL을 지원한다.
+
+~~~java
+
+org.springframework.data.querydsl.QueryDslPredicateExecutor
+org.springframework.data.querydsl.QueryDslRepositorySupport
+
+~~~
+
+### 12.10.1 QueryDslPredicateExecutor 사용
+
+Repository에서 QueryDslPredicateExecutor 상속 > 바로 QueryDSL을 사용할 수 있다.
+
+~~~java
+
+QItem item = QItem.item;
+
+Iterable<Item> result = itemRepository.findAll( // 검색조건으로 사용하면서 페이징, 정렬도 사용가능
+        item.name.contains("장난감").and(item.price.between(1000,3000))
+);
+
+~~~
+
+위 기능은 편리하게 사용하능 하지만 join, fetch를 사용할 수 없다.
+
+
+### 12.10.2 QueryDslRepositorySupport 사용
+
+QueryDSL의 모든 기능을 사용하려면 JPAQuery을 사용해야 한다. 이떄 QueryDslRepositorySupport를 상속받으면 좀더 쉽게 기능을 사용할 수 있다.
+
+~~~java
+
+public class OrderRepositoryImpl extends QueryDslRepositorySupport implements CustomOrderRepository {
+
+    public OrderRepositoryImpl() {
+        super(Order.class);
+    }
+
+    @Override
+    public List<Order> search(OrderSearch orderSearch) {
+
+        QOrder order = QOrder.order;
+        QMember member = QMember.member;
+
+        JPQLQuery query = from(order);
+
+        if (StringUtils.hasText(orderSearch.getMemberName())) {
+            query.leftJoin(order.member, member)
+                    .where(member.name.contains(orderSearch.getMemberName()));
+        }
+
+        if (orderSearch.getOrderStatus() != null) {
+            query.where(order.status.eq(orderSearch.getOrderStatus()));
+        }
+
+        return query.list(order);
+    }
+}
+
+## 12.11 정리
+
+Spring JPA에서 기능을 대폭 간소화하여 사용할 수 있는 방법을 제공, 스프링을 사용한다면 스프링 데이터 JPA는 선택이 아닌 필수 ...
+
+~~~
+
