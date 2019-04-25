@@ -652,9 +652,9 @@ public class OrderRepositoryImpl extends QueryDslRepositorySupport implements Cu
     }
 }
 
+~~~
+
 ## 12.11 정리
 
 Spring JPA에서 기능을 대폭 간소화하여 사용할 수 있는 방법을 제공, 스프링을 사용한다면 스프링 데이터 JPA는 선택이 아닌 필수 ...
-
-~~~
 
