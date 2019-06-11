@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40049e24-4bfc-46ff-80dd-13513c072718" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/06/06_다양한연관관계매핑.md" beforeDir="false" afterPath="$PROJECT_DIR$/06/06_다양한연관관계매핑.md" afterDir="false" />
+    <list default="true" id="40049e24-4bfc-46ff-80dd-13513c072718" name="Default Changelist" comment="13장 - 실습위주로 해 보자.">
+      <change afterPath="$PROJECT_DIR$/13/images/img13_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13/13_웹 애플리케이션과 영속성 관리.md" beforeDir="false" afterPath="$PROJECT_DIR$/13/13_웹 애플리케이션과 영속성 관리.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13/images/img13_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/13/images/img13_3.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -22,12 +29,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/05/05.연관관계매핑기초.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="2238">
-                <caret line="298" column="75" selection-start-line="298" selection-start-column="75" selection-end-line="298" selection-end-column="75" />
+              <first_editor relative-caret-position="615">
+                <caret line="297" column="75" lean-forward="true" selection-start-line="297" selection-end-line="297" selection-end-column="75" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/13/13_웹 애플리케이션과 영속성 관리.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="711">
+                <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
               </first_editor>
               <second_editor />
             </state>
@@ -50,6 +69,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -57,10 +79,11 @@
         <option value="$PROJECT_DIR$/05/05_연관관계매핑기초.md" />
         <option value="$PROJECT_DIR$/05/05.연관관계매핑기초.md" />
         <option value="$PROJECT_DIR$/06/06_다양한연관관계매핑.md" />
+        <option value="$PROJECT_DIR$/13/13_웹 애플리케이션과 영속성 관리.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="973" />
@@ -74,52 +97,56 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="jpa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jpa" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="jpa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jpa" type="462c0819:PsiDirectoryNode" />
-              <item name="04" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
+              <item name="12" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="jpa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jpa" type="462c0819:PsiDirectoryNode" />
-              <item name="05" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
+              <item name="13" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="jpa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jpa" type="462c0819:PsiDirectoryNode" />
-              <item name="05" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
+              <item name="13" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jpa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jpa" type="462c0819:PsiDirectoryNode" />
-              <item name="06" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553410486208" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/13" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/13/images" />
       <recent name="$PROJECT_DIR$/05/images" />
     </key>
   </component>
@@ -148,17 +175,33 @@
       <workItem from="1553394307573" duration="410000" />
       <workItem from="1553395457406" duration="7686000" />
       <workItem from="1553519301907" duration="442000" />
+      <workItem from="1560253055415" duration="3265000" />
     </task>
+    <task id="LOCAL-00001" summary="13장 - 실습위주로 해 보자.">
+      <created>1560266953208</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560266953208</updated>
+    </task>
+    <task id="LOCAL-00002" summary="MD 수정">
+      <created>1560267243536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560267243536</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8538000" />
+    <option name="totallyTimeSpent" value="11803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1916972" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1910867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -177,6 +220,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Jms Messenger" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -190,6 +234,11 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="13장 - 실습위주로 해 보자." />
+    <MESSAGE value="MD 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="MD 수정" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/05/05_연관관계매핑기초" />
@@ -215,8 +264,18 @@
     <entry file="file://$PROJECT_DIR$/05/05.연관관계매핑기초.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="2238">
-            <caret line="298" column="75" selection-start-line="298" selection-start-column="75" selection-end-line="298" selection-end-column="75" />
+          <first_editor relative-caret-position="615">
+            <caret line="297" column="75" lean-forward="true" selection-start-line="297" selection-end-line="297" selection-end-column="75" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/13/13_웹 애플리케이션과 영속성 관리.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="711">
+            <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
           </first_editor>
           <second_editor />
         </state>
